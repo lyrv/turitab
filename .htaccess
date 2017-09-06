@@ -1,0 +1,24 @@
+Options +Indexes
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /
+#escomentarioRewriterule ^(.+)/$ /index.php?page=$1 [NC,L]
+RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml)$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+#RedirectMatch permanent ^/((css|js|images|includes)/.*)  /$1
+#original
+#Rewriterule ^([a-z]+)/(.+)/(.+)/(.+)/(.+)/([0-9]+)(/*)$ /index.php?q=$1&qs=$2&campo=$3&filaspp=$4&id=$5&paginaactual=$6 [NC,L]
+#Rewriterule ^([a-z]+)/(.+)(/*)$ /index.php?q=$1&qs=$2 [NC,L]
+#Rewriterule ^([a-z]+)/(.+)-(.+)(/*)$ /index.php?q=$1&qs=$2&sqs=$3 [NC,L]
+#original
+Rewriterule ^([a-z]+)(/*)$ /index.php?q=$1 [NC,L]
+Rewriterule ^administracion/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)(/*)$ /administracion/index.php?q=$1&qs=$2 [L]
+Rewriterule ^administracion/([A-Za-z0-9-]+)(/*)$ /administracion/index.php?q=$1&qs=$2 [L]
+Rewriterule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)(/*)$ /index.php?q=$1&qs=$2 [NC,L]
+Rewriterule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)-([A-Za-z0-9-]+)(/*)$ /index.php?q=$1&qs=$2&sqs=$3 [NC,L]
+Rewriterule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/action/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)(/*)$ /index.php?q=$1&qs=$2&action=$3&campo=$4&id=$5 [NC,L]
+Rewriterule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)(/*)$ /index.php?q=$1&qs=$2&campo=$3&filaspp=$4&id=$5&paginaactual=$6 [NC,L]
